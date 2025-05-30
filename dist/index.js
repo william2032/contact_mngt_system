@@ -42,35 +42,57 @@ class ContactManager {
     }
 }
 const form = document.getElementById('contactForm');
-const firstName = document.getElementById('first-name');
-const lastName = document.getElementById('last-name');
+const firstName = document.getElementById('firstName');
+const lastName = document.getElementById('lastName');
 const email = document.getElementById('email');
 const phoneNumber = document.getElementById('phone');
-const contactList = document.createElement('div');
-contactList.id = 'contact-list';
-document.body.appendChild(contactList);
+const table = document.createElement('table');
+table.innerHTML = `
+  <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="contact-tbody"></tbody>
+`;
+document.body.appendChild(table);
+const tbody = document.getElementById('contact-tbody');
 const manager = new ContactManager();
 let editId = null;
 function renderContacts() {
-    contactList.innerHTML = '';
+    tbody.innerHTML = '';
     const contacts = manager.getContacts();
+    console.log(contacts);
+    if (contacts.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" style="text-align: center;">No contacts yet</td></tr>';
+    }
     contacts.forEach(contact => {
-        const contactDiv = document.createElement('div');
-        contactDiv.classList.add('contactDiv');
-        contactDiv.innerHTML = `
-        <p> ${contact.firstName} ${contact.lastName} </p><br>
-        <p>Email: ${contact.email}</p><br>
-        Phone: ${contact.phoneNumber}</br>
-        <button data-id =${contact.id} class="edit-btn"> Edit</button>
-        <button data-id =${contact.id} class="delete-btn"> Delete</button>
+        const row = document.createElement('tr');
+        row.innerHTML = `
+             <td>${contact.firstName} ${contact.lastName}</td>
+            <td>${contact.email}</td>
+            <td>${contact.phoneNumber}</td>
+            <td>
+                <button class="edit-btn" data-id="${contact.id}">Edit</button>
+                <button class="delete-btn" data-id="${contact.id}">Delete</button>
+            </td>
         `;
-        contactList.append(contactDiv);
+        tbody.append(row);
     });
     document.querySelectorAll('.delete-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const id = parseInt(e.target.getAttribute('data-id'));
-            manager.deleteContact(id);
-            renderContacts();
+            // const user: ContactManager = new ContactManager();
+            // user.getContacts().forEach((contact: Contact) => {
+            //     const name: string = contact.firstName.toUpperCase();
+            // }
+            if (confirm(`Delete contact: ${id}`)) { //todo-change to show name instead of id
+                manager.deleteContact(id);
+                renderContacts();
+            }
         });
     });
     document.querySelectorAll('.edit-btn').forEach(btn => {
@@ -87,6 +109,8 @@ function renderContacts() {
             else {
                 console.log(`Contact id ${id} not found`);
             }
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.textContent = 'Update Contact';
         });
     });
 }
@@ -96,6 +120,8 @@ form.addEventListener('submit', (e) => {
     if (editId) {
         manager.updateContact(contact);
         editId = null;
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.textContent = 'Add Contact';
     }
     else {
         manager.addContact(contact);

@@ -11,27 +11,39 @@
 </head>
 <body>
 <!--form -> inputs ;add ,delete ,edit user details ;name,email,phone-number then store in localstorage-->
-<div class="main">
-    <h2>Contact Management System</h2>
-    <form action="#" id="contactForm" >
-        <div class="inputs">
-        <label for="first-name">First Name
-            <input  id=first-name type="text" placeholder="eg:- John" class="form-control" required>
-        </label>
-        <label for="last-name">Last Name
-            <input id="last-name" type="text" placeholder="eg:- Doe"  class="form-control" required>
-        </label>
-        <label for="email">Email
-            <input  id="email"  type="email" placeholder="eg:- johndoe@gmail.com" class="form-control" required>
-        </label>
-        <label for="phone">Phone Number
-            <input id="phone" type="text" placeholder="+2547800000" class="form-control" required>
-        </label>
-        </div>
-        <div class="inputs-btn">
-            <button type="submit" id="btn-submit">Submit</button>
-        </div>
-    </form>
+<div class="container">
+    <div class="header">
+        <h1>Contact Management System</h1>
+    </div>
+    <div class="form-section">
+        <form id="contactForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" placeholder="eg:-John" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" placeholder="eg:- Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="eg:- john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="eg:- +2547000000" required>
+                </div>
+            </div>
+            <div class="form-Btn">
+                <button type="submit" class="btn btn-primary" id="submitBtn">Add Contact</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-section">
+
+    </div>
 </div>
 
 <script src="dist/index.js"></script>

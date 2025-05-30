@@ -5,78 +5,263 @@
 }
 
 body {
-    font-family: "Montserrat", sans-serif;    background: linear-gradient(135deg, hsl(245, 31%, 15%) 0%, hsl(255, 49%, 20%) 100%);
+    font-family: "Montserrat", sans-serif;
+    /*background: linear-gradient(135deg, hsl(245, 31%, 15%) 0%, hsl(255, 49%, 20%) 100%);*/
+    background: #f8f9fa;
+
     min-height: 100vh;
+    padding: 20px;
     line-height: 1.6;
+
 }
 
-.main {
+.container {
     max-width: 1200px;
     margin: 100px auto;
-    height: 100%;
-    padding: 40px;
+    padding: 10px;
     border-radius: 10px;
-    background: hsla(254, 48%, 24%, 0.75);
 }
 
-h2 {
-    color: #5a67d8;
-    margin-bottom: 20px;
-    font-size: 2.5rem;
+.header {
     display: flex;
-    align-items: center;
+    justify-content: center;
+}
+.header h1{
+    color: #5a67d8;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    margin: 30px auto;
     gap: 10px;
 }
 
-form label {
-    text-align:left;
-    font-weight: 600;
-    color: hsl(220, 48%, 100%);;
-    margin: 12px;
+.form-section {
+    padding: 30px;
+    background: hsl(0, 0%, 100%);
+    border-radius: 10px;
+    border-bottom: 1px solid #e9ecef;
 }
 
-.inputs {
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+
+}
+
+.form-group {
     display: flex;
     flex-direction: column;
 }
-form input {
-    padding: 12px;
-    gap: 10px;
-    border: none;
-    border-radius: 5px;
-    outline: none;
+
+
+input {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-bottom: 35px;
 }
- .form-control {
-     display: flex;
-     width: 100%;
-     height: 50px;
-     padding: 12px 10px;
-     border: 2px solid #e2e8f0;
-     border-radius: 10px;
-     font-size: 18px;
-     font-weight: 500;
-     transition: border-color 0.3s ease, box-shadow 0.3s ease
- }
- .inputs-btn button {
-     display: flex;
-     justify-content: center;
-     width: 100%;
-     padding-top: 12px;
- }
-  .inputs-btn button {
-      background: linear-gradient(135deg, #5a67d8, #667eea);
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 8px;
-      cursor: pointer;
-      height: 50px;
-      font-size: 20px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      margin: 10px 0;
-  }
-  .contactDiv {
-      background: #fff;
-  }
+
+.inputs label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    color: #374151;
+    font-size: 15px;
+    letter-spacing: 3px;
+}
+input:focus {
+    outline: none;
+    border-color: #4facfe;
+    transform: translateY(-2px);
+}
+input {
+    margin-top: 10px;
+    padding: 16px 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 15px;
+    transition: all 0.3s;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+input::placeholder {
+    color: #9ca3af;
+    font-weight: 400;
+}
+
+.form-Btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}
+
+.btn {
+    background: #1592d5;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 19px;
+    font-weight: 600;
+    padding: 16px 80px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 180px;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.btn-primary {
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+}
+
+.edit-btn , .delete-btn{
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-right: 10px;
+}
+.edit-btn {
+    background: #04815b;
+    color: white;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.delete-btn:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    transform: translateY(-2px);
+    color: white;
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+.table-section {
+    padding: 30px;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    border-collapse: collapse;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+}
+
+th {
+    background: #1592d5;
+    color: white;
+    padding: 20px;
+
+    font-weight: 600;
+    text-align: left;
+}
+
+td {
+    padding: 20px;
+    color: #374151;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+tr:hover {
+    background: #f8f9fa;
+}
+
+td[colspan="4"] {
+    text-align: center;
+    color: #6b7280;
+    font-style: italic;
+    padding: 60px;
+    font-size: 18px;
+    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .main {
+        margin-bottom: 25px;
+        border-radius: 16px;
+    }
+
+    .main h2 {
+        font-size: 1.75rem;
+        padding: 25px 15px;
+    }
+
+    #contactForm {
+        padding: 25px;
+    }
+
+
+    .inputs {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 25px;
+    }
+
+    .inputs input {
+        padding: 14px 16px;
+        font-size: 16px;
+    }
+
+    #btn-submit {
+        width: 100%;
+        padding: 16px;
+        font-size: 16px;
+    }
+
+
+    table {
+        border-radius: 16px;
+    }
+
+    th, td {
+        padding: 15px 12px;
+    }
+
+    th {
+        font-size: 12px;
+    }
+
+    .edit-btn, .delete-btn {
+        padding: 8px 14px;
+        font-size: 12px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+    }
+}
